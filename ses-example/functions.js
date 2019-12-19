@@ -1,8 +1,6 @@
 const Joi = require('@hapi/joi');
 const emailService = require('./service/email-service');
 
-let response;
-
 exports.sendEmail = async (event) => {
 	const body = JSON.parse(event.body);
 
@@ -14,10 +12,19 @@ exports.sendEmail = async (event) => {
 	try {
 		await requestSchema.validateAsync(body);
 		await emailService.sendMail(body.template, { emails: body.emails });
-	} catch (err) {
-		console.log(err);
-		return err;
-	}
 
-	return response;
+		return {
+			statusCode: 200,
+			body: JSON.stringify({
+				message: 'hello world',
+			}),
+		};
+	} catch (err) {
+		return {
+			statusCode: 400,
+			body: JSON.stringify({
+				err,
+			}),
+		};
+	}
 };
