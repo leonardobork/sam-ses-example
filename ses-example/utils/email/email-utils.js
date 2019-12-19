@@ -35,12 +35,12 @@ function bindContent(template, content) {
   });
 }
 
-async function mountTemplate(templateId, content) {
+async function mountTemplate(templateId, content = []) {
   const template = await getTemplateContent(templateId);
   return !content.length ? template : bindContent(template, content);
 }
 
-exports = {
+module.exports = {
   getTemplateContent,
   bindContent,
   mountTemplate,

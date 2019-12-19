@@ -17,14 +17,16 @@ let response;
  * 
  */
 exports.sendEmail = async (event, context) => {
+	const body = JSON.parse(event.body)
+
 	const requestSchema = Joi.object({
-		template: Joi.string().required()
+		template: Joi.string().required(),
+		emails: Joi.array().items(Joi.string()).required()
 	})
 
 	try {
-		console.log(event)
-		const value = requestSchema.validateAsync(event.body)
-		await emailService.sendMail(event.body.template, {})
+		await requestSchema.validateAsync(body)
+		await emailService.sendMail(body.template, { emails: body.emails })
 	} catch (err) {
 		console.log(err);
 		return err;
