@@ -1,7 +1,7 @@
 {
-  "body": "{\"message\": \"hello world\"}",
+  "body": "{\"template\": \"template-example\"}",
   "resource": "/{proxy+}",
-  "path": "/path/to/resource",
+  "path": "/sendEmail",
   "httpMethod": "POST",
   "isBase64Encoded": false,
   "queryStringParameters": {

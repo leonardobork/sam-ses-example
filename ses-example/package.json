@@ -1,13 +1,15 @@
 {
-  "name": "hello_world",
+  "name": "sam-ses-example",
   "version": "1.0.0",
-  "description": "hello world sample for NodeJS",
-  "main": "app.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
+  "description": "SAM-SES example with NodeJS",
+  "main": "functions.js",
+  "repository": "https://github.com/leonardobork/sam-ses-example",
   "author": "SAM CLI",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0"
+    "@hapi/joi": "^16.1.8",
+    "axios": "^0.18.0",
+    "nodemailer": "^6.4.2"
   },
   "scripts": {
     "test": "mocha tests/unit/"

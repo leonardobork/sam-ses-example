@@ -1,4 +1,6 @@
 // const axios = require('axios')
+const Joi = require('@hapi/joi');
+const emailService = require('./service/email-service')
 // const url = 'http://checkip.amazonaws.com/';
 let response;
 
@@ -15,19 +17,18 @@ let response;
  * 
  */
 exports.sendEmail = async (event, context) => {
-    try {
-        // const ret = await axios(url);
-        response = {
-            'statusCode': 200,
-            'body': JSON.stringify({
-                message: 'hello world',
-                // location: ret.data.trim()
-            })
-        }
-    } catch (err) {
-        console.log(err);
-        return err;
-    }
+	const requestSchema = Joi.object({
+		template: Joi.string().required()
+	})
 
-    return response
+	try {
+		console.log(event)
+		const value = requestSchema.validateAsync(event.body)
+		await emailService.sendMail(event.body.template, {})
+	} catch (err) {
+		console.log(err);
+		return err;
+	}
+
+	return response
 };
