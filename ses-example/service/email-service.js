@@ -14,13 +14,13 @@ const DEFAULT_FROM = '"Testing Email" <noreply@sounoro.co>';
  * @param {object} options.subject
  */
 async function sendMail(templateId, options) {
-  const template = await mountTemplate(templateId, options.content);
-  return transporter.sendMail({
-    from: DEFAULT_FROM,
-    to: options.emails.join(','),
-    subject: options.subject,
-    html: template,
-  });
+	const template = await mountTemplate(templateId, options.content);
+	return transporter.sendMail({
+		from: DEFAULT_FROM,
+		to: options.emails.join(','),
+		subject: options.subject,
+		html: template,
+	});
 }
 
 module.exports = { sendMail };
