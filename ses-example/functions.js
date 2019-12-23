@@ -2,7 +2,7 @@ const Joi = require('@hapi/joi');
 const emailService = require('./service/email-service');
 
 exports.sendEmail = async (event) => {
-	const body = JSON.parse(event.body);
+	const body = event && event.body ? JSON.parse(event.body) : {}
 
 	const requestSchema = Joi.object({
 		template: Joi.string().required(),
@@ -16,14 +16,15 @@ exports.sendEmail = async (event) => {
 		return {
 			statusCode: 200,
 			body: JSON.stringify({
-				message: 'hello world',
+				message: 'Emails sent successfully',
 			}),
 		};
 	} catch (err) {
+		console.log(err)
 		return {
 			statusCode: 400,
 			body: JSON.stringify({
-				err,
+				err: 'Oops.. something wrong happened'
 			}),
 		};
 	}

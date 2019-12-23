@@ -14,7 +14,7 @@ describe('Tests Email Utils', () => {
     
     expect(template).to.be.an('string');
     expect(template.length).to.equal(TEMPLATE_LENGTH)
-  })
+  });
 
   it('verifies if content is being binded in templates', async () => {
     const MATCH_REGEX = new RegExp(CODE_VALUE, 'g');
@@ -25,7 +25,7 @@ describe('Tests Email Utils', () => {
 
     expect(bindedTemplate).to.match(MATCH_REGEX);
     expect(bindedTemplate).to.be.an('string');
-  })
+  });
 
   it('verifies if template is being mounted correctly', async () => {
     const MATCH_REGEX = new RegExp(CODE_VALUE, 'g');
@@ -34,5 +34,5 @@ describe('Tests Email Utils', () => {
 
     expect(mountedTemplate).to.match(MATCH_REGEX);
     expect(mountedTemplate).to.be.an('string');
-  })
-})
+  });
+});
