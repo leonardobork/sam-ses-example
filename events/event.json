@@ -1,5 +1,5 @@
 {
-  "body": "{\"template\": \"template-example\", \"emails\": [\"leonardo@westpoint.io\"]}",
+  "body": "{\"template\": \"template-example\", \"emails\": [\"leonardo@sounoro.co\"]}",
   "resource": "/{proxy+}",
   "path": "/sendEmail",
   "httpMethod": "POST",

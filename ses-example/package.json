@@ -15,7 +15,7 @@
     "lint"
   ],
   "scripts": {
-    "test": "mocha tests/unit/",
+    "test": "mocha tests/unit/**",
     "lint": "eslint ./ --fix"
   },
   "devDependencies": {
